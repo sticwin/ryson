@@ -36,6 +36,8 @@
   </div>
 </view>
 
+<!--
+
 <view class = "table" style="display:flex;">   
   <div class="whidth" style="display:flex;">
       <view class="label-width">当前:</view>
@@ -46,6 +48,7 @@
       <view class="input-width-2">{{buyIndexAmount}}</view>
   </div>
 </view>
+-->
 
 
 <view class = "table" style="display:flex;">   

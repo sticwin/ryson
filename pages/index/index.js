@@ -1,5 +1,7 @@
 //index.js
 //获取应用实例
+//测试分支 2020/02/07， 数据输入错误后，可以矫正操作
+
 
 var listData=[
   { index: 1, date: '2019/01/02', indexValue: 544.01, MCAD: 1.67, Manipulate: '', indexNum: '', sellDate: "", sellIndexValue: '', sellProfit: '' },
@@ -584,9 +586,9 @@ checkIndexAndDate:function(){
 
     //计算MCAD 并更新当前操作结果
  caculateTap(e){
-
+    //updateTap();
     this.caculateMCAD(e);  //更新全部的MCAD
-
+    
     this.data.listDataStored = listData;
     wx.setStorageSync('storedListData', JSON.stringify(this.data.listDataStored));  //同步数据到缓存中
      
@@ -619,6 +621,8 @@ checkIndexAndDate:function(){
     
       //console.log("curMCAD："+curMCAD+ "    lastMCAD:"+lastMCAD + "    负累计MCAD："+curMCAD_MinusSum);
       //买入判断，并做好记录
+        listData[i].Manipulate = '';
+        listData[i].indexNum = '';
         if (lastMCAD < buyBoundNum && curMCAD >= buyBoundNum && curMCAD_MinusSum < buyMinusSumThreshold){
             listData[i].Manipulate = "买入";
             listData[i].indexNum = parseFloat((this.data.iSingleBuySum/curIndexValue).toFixed(2));
