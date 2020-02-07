@@ -1,0 +1,96 @@
+<!--index.wxml-->
+
+
+<view class="{{bshowTip?'tipShowView':'tipHideView'}}">{{strTips}}</view>
+
+  <view class = "table-2" style="display:flex;">   
+    <div class="whidth" style="display:flex;">
+        <view class="label-width">DATE:</view>
+        <input class="input-width" bindinput="bindDateInput" value="{{inputDate}}" confirm-type="done" maxlength="10" placeholder="日期"/>
+    </div>
+    <div class="whidth" style="display:flex;">
+        <view class="label-width" style="inline-flex">收盘数:</view>
+        <input class="input-width" type="digit" bindinput="bindIndexInput" value="{{inputIndexValue}}" maxlength="8" confirm-type="done" placeholder="输入收盘指数"/>
+    </div>
+  </view>
+
+  <view class = "control-area bottom-margin">   
+    <div class="whidth" style="display:flex;">
+      <button type="primary" bindtap="updateTap">更新数据</button>
+    </div>
+    <div class="whidth" style="display:flex;">
+      <button type="primary" bindtap="addDataTap">增加数据</button>
+    </div>
+  </view>
+
+
+
+<view class = "table" style="display:flex;">    
+  <div class="whidth" style="display:flex;">
+      <view class="label-width">MCAD:</view>
+      <view class="input-width-2">{{mcadValue}}</view>
+  </div>
+  <div class="whidth" style="display:flex;">
+      <view class="label-width">卡住:</view>
+      <view class="input-width-2">{{totalBuyMoney}}</view>
+  </div>
+</view>
+
+<view class = "table" style="display:flex;">   
+  <div class="whidth" style="display:flex;">
+      <view class="label-width">当前:</view>
+      <view class="input-width-2">{{manipulateValue}}</view>
+  </div>
+  <div class="whidth " style="display:flex;">
+      <view class="label-width">份额:</view>
+      <view class="input-width-2">{{buyIndexAmount}}</view>
+  </div>
+</view>
+
+
+<view class = "table" style="display:flex;">   
+  <div class="whidth" style="display:flex;">
+      <view class="label-width">总次数:</view>
+      <view class="input-width-2">{{buyTimes}}</view>
+  </div>
+  <div class="whidth " style="display:flex;">
+      <view class="label-width">总盈利:</view>
+      <view class="input-width-2">{{winSum}}</view>
+  </div>
+</view>
+
+<view class="test">
+  <button type="primary"  bindtap="caculateTap">开始计算</button>
+</view>
+
+<view class = "text">每卡住5000元，购买金额加1000元</view>
+
+
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">日期</view>
+    <view class="th">收盘数</view>
+    <view class="th">MCAD</view>
+    <view class="th">操作</view>
+    <view class="th ">份数</view>
+  </view>
+  <block wx:for="{{listDataShow}}" wx:key="date">
+    <view class="tr-b" wx:if="{{index % 2 == 0}}" hover-class="tr-hover" >
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.date}}</view>
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.indexValue}}</view>
+      <view class="{{item.MCAD>0?'td-red':'td-green'}}" data-num="{{item.index}}" bindtap = "ViewTap">{{item.MCAD}}</view>
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.Manipulate}}</view>
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.indexNum}}</view>
+    </view>
+    <view class="tr" wx:else hover-class="tr-hover">
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.date}}</view>
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.indexValue}}</view>
+      <view class="{{item.MCAD>0?'td-red':'td-green'}}" data-num="{{item.index}}" bindtap = "ViewTap">{{item.MCAD}}</view>
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.Manipulate}}</view>
+      <view class="td" data-num="{{item.index}}" bindtap = "ViewTap">{{item.indexNum}}</view>
+    </view>
+  </block>
+
+
+</view>
+
